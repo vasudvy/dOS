@@ -33,7 +33,7 @@ export const TerminalApp: BaseApp = {
       icon: "🤖",
       title: "AI Assistant",
       description:
-        'Type "ryo &lt;prompt&gt;" to chat with Ryo AI directly inside the terminal.',
+        'Type "ai &lt;prompt&gt;" to chat with the AI assistant directly inside the terminal.',
     },
     {
       icon: "📝",
@@ -51,11 +51,11 @@ export const TerminalApp: BaseApp = {
   metadata: {
     name: "Terminal",
     version: "1.0",
-    creator: {
-      name: "Ryo Lu",
-      url: "https://github.com/ryokun6/ryos",
-    },
-    github: "https://github.com/ryokun6/ryos",
+      creator: {
+    name: "AI Desktop Team",
+    url: "https://github.com/ai-desktop/aios",
+  },
+  github: "https://github.com/ai-desktop/aios",
     icon: "/icons/terminal.png",
   },
 };

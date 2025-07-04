@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-ryOS is a web-based agentic AI operating system that recreates a classic macOS desktop environment with modern web technologies. It features a complete desktop interface with multiple built-in applications, AI chat integration, and cross-device compatibility.
+AiOS is a web-based agentic AI operating system that recreates a classic macOS desktop environment with modern web technologies. It features a complete desktop interface with multiple built-in applications, AI chat integration, and cross-device compatibility.
 
 ## Development Commands
 
@@ -127,4 +127,4 @@ src/
 - `public/data/` - Static data files for apps
 
 ## AI Agent Context
-When the AI agent (Ryo) is mentioned in issues or features, it refers to the system-integrated AI accessible through the Chats app. This AI has tool calling capabilities and can interact with the desktop environment, control applications, and manipulate files in the virtual file system.
+When the AI assistant is mentioned in issues or features, it refers to the system-integrated AI accessible through the Chats app. This AI has tool calling capabilities and can interact with the desktop environment, control applications, and manipulate files in the virtual file system.

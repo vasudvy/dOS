@@ -68,7 +68,6 @@ const AVAILABLE_COMMANDS = [
   "edit",
   "history",
   "about",
-  "ryo",
   "ai",
   "chat",
   "echo",
@@ -1542,16 +1541,16 @@ export function TerminalAppComponent({
           historyCommands[historyCommands.length - 1 - newIndex] || "";
 
         // If we're not in AI mode and the historic command was from AI mode
-        // (doesn't start with 'ryo' and was saved with 'ryo' prefix)
+        // (doesn't start with 'ai' and was saved with 'ai' prefix)
         const savedCommands = useTerminalStore.getState().commandHistory;
         const commandEntry = savedCommands[savedCommands.length - 1 - newIndex];
         if (
           !isInAiMode &&
           commandEntry &&
-          commandEntry.command.startsWith("ryo ") &&
-          !historicCommand.startsWith("ryo ")
+          commandEntry.command.startsWith("ai ") &&
+          !historicCommand.startsWith("ai ")
         ) {
-          setCurrentCommand("ryo " + historicCommand);
+          setCurrentCommand("ai " + historicCommand);
         } else {
           setCurrentCommand(historicCommand);
         }
@@ -1571,10 +1570,10 @@ export function TerminalAppComponent({
         if (
           !isInAiMode &&
           commandEntry &&
-          commandEntry.command.startsWith("ryo ") &&
-          !historicCommand.startsWith("ryo ")
+          commandEntry.command.startsWith("ai ") &&
+          !historicCommand.startsWith("ai ")
         ) {
-          setCurrentCommand("ryo " + historicCommand);
+          setCurrentCommand("ai " + historicCommand);
         } else {
           setCurrentCommand(historicCommand);
         }
@@ -1702,7 +1701,7 @@ terminal
   cowsay <text>    a talking cow
 
 assistant
-  ryo <prompt>     chat with ryo
+  ai <prompt>      chat with ai assistant
 
 `,
           isError: false,
@@ -2519,7 +2518,7 @@ assistant
             id: "system",
             role: "system",
             content:
-              "You are a coding assistant running in the terminal app on ryOS.",
+              "You are a coding assistant running in the terminal app on AiOS.",
           },
         ]);
 
@@ -2540,7 +2539,7 @@ assistant
             },
             {
               command: "",
-              output: `${spinnerChars[spinnerIndex]} ryo is thinking...`,
+              output: `${spinnerChars[spinnerIndex]} ai is thinking...`,
               path: "ai-thinking",
             },
           ]);
@@ -2552,13 +2551,13 @@ assistant
           );
 
           return {
-            output: `ask ryo anything. type 'exit' to return to terminal.\n→ from your command: ${initialPrompt}`,
+            output: `ask the ai assistant anything. type 'exit' to return to terminal.\n→ from your command: ${initialPrompt}`,
             isError: false,
           };
         }
 
         return {
-          output: `ask ryo anything. type 'exit' to return to terminal.`,
+          output: `ask the ai assistant anything. type 'exit' to return to terminal.`,
           isError: false,
         };
       }
@@ -2687,7 +2686,7 @@ assistant
     // Store in Zustand (including AI commands)
     useTerminalStore
       .getState()
-      .addCommand(command.startsWith("ryo ") ? command : `ryo ${command}`);
+      .addCommand(command.startsWith("ai ") ? command : `ai ${command}`);
 
     // Reset animated lines to ensure only new content gets animated
     setAnimatedLines(new Set());
@@ -2702,7 +2701,7 @@ assistant
           id: "system",
           role: "system",
           content:
-            "You are a coding assistant running in the terminal app on ryOS.",
+            "You are a coding assistant running in the terminal app on AiOS.",
         },
       ]);
 
@@ -2736,7 +2735,7 @@ assistant
           id: "system",
           role: "system",
           content:
-            "You are a coding assistant running in the terminal app on ryOS.",
+            "You are a coding assistant running in the terminal app on AiOS.",
         },
       ]);
 
@@ -2759,7 +2758,7 @@ assistant
           {
             command: "",
             output:
-              "chat cleared. you're still chatting with ryo. type 'exit' to return to terminal.",
+              "chat cleared. you're still chatting with the ai assistant. type 'exit' to return to terminal.",
             path: "ai-assistant",
           },
         ]);

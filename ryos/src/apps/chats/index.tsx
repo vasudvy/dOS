@@ -4,9 +4,9 @@ import { ChatsAppComponent } from "./components/ChatsAppComponent";
 export const helpItems = [
   {
     icon: "💬",
-    title: "Chat with Ryo",
+    title: "Chat with AI Assistant",
     description:
-      "Type your message to chat with Ryo, generate code, or help with ryOS.",
+      "Type your message to chat with the AI assistant, generate code, or help with AiOS.",
   },
   {
     icon: "#️⃣",
@@ -24,19 +24,19 @@ export const helpItems = [
     icon: "📝",
     title: "Control TextEdit",
     description:
-      "Ask Ryo to read, insert, replace, or delete lines in your open TextEdit document.",
+      "Ask the AI to read, insert, replace, or delete lines in your open TextEdit document.",
   },
   {
     icon: "🚀",
     title: "Control Apps",
     description:
-      "Ask Ryo to launch or close other applications like Internet Explorer or Video Player.",
+      "Ask the AI to launch or close other applications like Internet Explorer or Video Player.",
   },
   {
     icon: "💾",
     title: "Save Transcript",
     description:
-      "Save your current chat conversation with Ryo as a Markdown file.",
+      "Save your current chat conversation with the AI as a Markdown file.",
   },
 ];
 
@@ -44,10 +44,10 @@ export const appMetadata = {
   name: "Chats",
   version: "1.0",
   creator: {
-    name: "Ryo Lu",
-    url: "https://ryo.lu",
+    name: "AI Desktop Team",
+    url: "https://aios.example.com",
   },
-  github: "https://github.com/ryokun6/ryos",
+  github: "https://github.com/ai-desktop/aios",
   icon: "/icons/question.png",
 };
 
@@ -55,7 +55,7 @@ export const ChatsApp: BaseApp = {
   id: "chats",
   name: "Chats",
   icon: { type: "image", src: appMetadata.icon },
-  description: "Chat with Ryo, your personal AI assistant",
+  description: "Chat with your personal AI assistant",
   component: ChatsAppComponent,
   helpItems,
   metadata: appMetadata,
