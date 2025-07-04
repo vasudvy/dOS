@@ -8,6 +8,7 @@ import { useWallpaper } from "@/hooks/useWallpaper";
 import { RightClickMenu, MenuItem } from "@/components/ui/right-click-menu";
 import { SortType } from "@/apps/finder/components/FinderMenuBar";
 import { useLongPress } from "@/hooks/useLongPress";
+import { AiChatbar } from "@/components/shared/AiChatbar";
 
 interface DesktopStyles {
   backgroundImage?: string;
@@ -254,6 +255,7 @@ export function Desktop({
         onClose={() => setContextMenuPos(null)}
         items={desktopMenuItems}
       />
+      <AiChatbar />
     </div>
   );
 }

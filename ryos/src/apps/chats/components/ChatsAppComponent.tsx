@@ -23,7 +23,6 @@ import {
   type ChatRoom,
 } from "@/types/chat";
 import { Button } from "@/components/ui/button";
-import { useRyoChat } from "../hooks/useRyoChat";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getPrivateRoomDisplayName } from "@/utils/chat";
@@ -168,9 +167,9 @@ export function ChatsAppComponent({
     displayNames.join(", ") +
     (remainingCount > 0 ? `, ${remainingCount}+` : "");
 
-  // Use the @ryo chat hook
-  const { isRyoLoading, stopRyo, handleRyoMention, detectAndProcessMention } =
-    useRyoChat({
+  // Use the @ai chat hook
+  const { isAiLoading, stopAi, handleAiMention, detectAndProcessMention } =
+    useAiChat({
       currentRoomId,
       onScrollToBottom: () => setScrollToBottomTrigger((prev) => prev + 1),
       roomMessages: currentRoomMessages?.map((msg: AppChatMessage) => ({
@@ -219,7 +218,7 @@ export function ChatsAppComponent({
       if (currentRoomId && username) {
         const trimmedInput = input.trim();
 
-        // Detect if this is an @ryo mention
+        // Detect if this is an @ai mention
         const { isMention, messageContent } =
           detectAndProcessMention(trimmedInput);
 
@@ -229,11 +228,11 @@ export function ChatsAppComponent({
             target: { value: "" },
           } as React.ChangeEvent<HTMLInputElement>);
 
-          // Send the user's message to the chat room first (showing @ryo)
+          // Send the user's message to the chat room first (showing @ai)
           sendRoomMessage(input);
 
           // Then send to AI (doesn't affect input clearing)
-          handleRyoMention(messageContent);
+          handleAiMention(messageContent);
 
           // Trigger scroll
           setScrollToBottomTrigger((prev) => prev + 1);
@@ -260,7 +259,7 @@ export function ChatsAppComponent({
       handleAiSubmit,
       input,
       handleInputChange,
-      handleRyoMention,
+      handleAiMention,
       detectAndProcessMention,
     ]
   );
@@ -284,11 +283,11 @@ export function ChatsAppComponent({
     setScrollToBottomTrigger((prev) => prev + 1);
   }, [handleNudge]);
 
-  // Combined stop function for both AI chat and @ryo mentions
+  // Combined stop function for both AI chat and @ai mentions
   const handleStop = useCallback(() => {
     stop(); // Stop regular AI chat
-    stopRyo(); // Stop @ryo chat
-  }, [stop, stopRyo]);
+    stopAi(); // Stop @ai chat
+  }, [stop, stopAi]);
 
   // Font size handlers using store action
   const handleIncreaseFontSize = useCallback(() => {
@@ -398,7 +397,7 @@ export function ChatsAppComponent({
         ...msg,
         // Ensure createdAt is a Date object if it exists, otherwise undefined
         createdAt: msg.createdAt ? new Date(msg.createdAt) : undefined,
-        username: msg.role === "user" ? username || "You" : "Ryo",
+        username: msg.role === "user" ? username || "You" : "AI Assistant",
       }));
 
   return (
@@ -441,7 +440,7 @@ export function ChatsAppComponent({
             ? currentRoom.type === "private"
               ? getPrivateRoomDisplayName(currentRoom, username)
               : `#${currentRoom.name}`
-            : "@ryo"
+            : "@assistant"
         }
         onClose={onClose}
         isForeground={isForeground}

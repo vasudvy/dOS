@@ -1,6 +1,6 @@
 # Agent Guidelines
 
-This project is **ryOS** – a web-based AI desktop environment built with React, Tailwind CSS, shadcn, Vite and Bun. Use these notes when working in this repository.
+This project is **AiOS** – a web-based AI desktop environment built with React, Tailwind CSS, shadcn, Vite and Bun. Use these notes when working in this repository.
 
 ## Environment
 - Install dependencies with Bun. If Bun is not installed use:

@@ -169,7 +169,7 @@ export const useVideoStore = create<VideoStoreState>()(
       setIsPlaying: (val) => set({ isPlaying: val }),
     }),
     {
-      name: "ryos:videos",
+      name: "aios:videos",
       version: CURRENT_VIDEO_STORE_VERSION, // Set the current version
       migrate: (persistedState, version) => {
         let state = persistedState as Partial<VideoStoreState>; // Type assertion
